@@ -95,6 +95,7 @@ section{padding:34px 0}
 .btn:hover{border-color:var(--maroon);color:var(--maroon)}
 .btn.primary{background:var(--maroon);color:#fff;border-color:var(--maroon)}
 .btn.primary:hover{background:var(--maroon2);color:#fff}
+.btn:disabled{opacity:.4;cursor:default;pointer-events:none}
 .tree-bar .spacer{flex:1}
 .zoom{display:flex;border:1px solid var(--line);border-radius:99px;background:var(--card);overflow:hidden}
 .zoom button{font:inherit;font-weight:700;border:none;background:none;color:var(--ink);width:38px;height:36px;cursor:pointer}
@@ -168,7 +169,6 @@ footer .mantra{opacity:1;animation:none;font-size:1rem}
   <div class="chips">
     <span class="chip"><b id="age">28</b> years</span>
     <span class="chip"><b>172</b> cm · 5′8″</span>
-    <span class="chip">Rashi <b>Mesh</b></span>
   </div>
 </header>
 
@@ -396,6 +396,9 @@ function render() {
       p.button.classList.toggle("pulse", p.branch === "me" && !open.father && !open.mother);
     }
   }
+  const allOpen = Object.values(open).every(Boolean), noneOpen = !Object.values(open).some(Boolean);
+  document.getElementById("expandAll").disabled = allOpen;
+  document.getElementById("collapseAll").disabled = noneOpen;
   const b = visibleBounds();
   sizer.style.width = b.width * scale + "px";
   sizer.style.height = b.height * scale + "px";
@@ -426,13 +429,13 @@ function fitScale() {
 
 document.getElementById("expandAll").onclick = () => {
   for (const b in open) open[b] = true;
-  scale = Math.max(0.6, fitScale());
+  scale = Math.max(0.3, fitScale());
   render();
   centerOn("ankit");
 };
 document.getElementById("collapseAll").onclick = () => {
   for (const b in open) open[b] = false;
-  scale = 1.15;
+  scale = fitScale();
   render();
   centerOn("ankit");
 };
@@ -454,6 +457,8 @@ window.addEventListener("pointermove", e => {
 });
 window.addEventListener("pointerup", () => { drag = null; ft.classList.remove("dragging"); });
 
+// Start collapsed to immediate family, zoomed to fit
+scale = fitScale();
 render();
 centerOn("ankit", "instant");
 
