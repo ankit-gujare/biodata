@@ -115,7 +115,7 @@ section{padding:34px 0}
 .ft-lines circle.draw{opacity:0;animation:pop .3s .6s forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes pop{to{opacity:1}}
-.p{position:absolute;width:150px;height:220px;margin-left:-75px;opacity:0;transform:scale(.5) translateY(-30px);pointer-events:none;
+.p{position:absolute;width:150px;height:240px;margin-left:-75px;opacity:0;transform:scale(.5) translateY(-30px);pointer-events:none;
   transition:opacity .4s,transform .5s cubic-bezier(.3,1.4,.5,1)}
 .p.show{opacity:1;transform:none;pointer-events:auto}
 .pc{height:100%;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:14px 10px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;transition:border-color .25s,transform .25s}
@@ -126,7 +126,7 @@ section{padding:34px 0}
 .prel{margin-top:8px;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold)}
 .pname{font-weight:700;font-size:.86rem;line-height:1.25;margin-top:2px}
 .pname small{display:block;font-size:.66rem;color:var(--muted);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
-.prole{font-size:.72rem;color:var(--muted);line-height:1.3;margin-top:3px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.prole{font-size:.72rem;color:var(--muted);line-height:1.3;margin-top:3px;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
 .p.me .pc{background:linear-gradient(160deg,var(--maroon),#4a0f1a);border:none;color:#fff}
 .p.me .pav{border-color:#f1d9a8}
 .p.me .prel{color:#f1d9a8}
@@ -252,7 +252,7 @@ footer .mantra{opacity:1;animation:none;font-size:1rem}
 
 <script>
 // ---- Family tree: one card per person, placed on a grid of columns and generations ----
-const COLUMN_WIDTH = 170, ROW_HEIGHT = 300, CARD_HEIGHT = 220, PADDING = 50;
+const COLUMN_WIDTH = 170, ROW_HEIGHT = 300, CARD_HEIGHT = 240, PADDING = 50;
 
 // branch = which button reveals this person. "me" is always shown: me, parents, sister and brother-in-law.
 // Each branch opens only when its parent branch is open too.
@@ -260,8 +260,8 @@ const parentBranch = { father: null, mother: null, telavane: "father", sansare: 
 const people = {
   chandrakant: { name: "Chandrakant Gujare", late: true, rel: "Grandfather", role: "Ticket Collector, Brihanmumbai Electric Supply & Transport", col: 3.5, row: 0, branch: "father" },
   rohini:      { name: "Rohini Gujare", late: true, rel: "Grandmother", role: "Homemaker", col: 4.5, row: 0, branch: "father" },
-  shriram:     { name: "Shriram Gandhe", late: true, rel: "Grandfather", role: "School Principal", col: 11.5, row: 0, branch: "mother" },
-  jayanti:     { name: "Jayanti Gandhe", late: true, rel: "Grandmother", role: "School Principal", col: 12.5, row: 0, branch: "mother" },
+  shriram:     { name: "Shriram Gandhe", late: true, rel: "Grandfather", role: "School Owner", col: 11.5, row: 0, branch: "mother" },
+  jayanti:     { name: "Jayanti Gandhe", late: true, rel: "Grandmother", role: "School Trustee", col: 12.5, row: 0, branch: "mother" },
 
   pradnya:     { name: "Pradnya Telavane", rel: "Aunt", role: "Homemaker", col: 0, row: 1, branch: "father", opens: "telavane" },
   pramod:      { name: "Pramod Telavane", rel: "Uncle", role: "Retired Officer in Municipal Secretary Department, Thane Municipal Corporation", col: 1, row: 1, branch: "father" },
@@ -271,10 +271,10 @@ const people = {
   rakhi:       { name: "Rakhi Gujare", rel: "Aunt", role: "Homemaker", col: 6, row: 1, branch: "father" },
   vidyadhar:   { name: "Vidyadhar Gujare", rel: "Father", role: "Retired Assistant Manager, Finance Department, Air India", col: 8, row: 1, branch: "me", opens: "father" },
   pragati:     { name: "Pragati Gujare", rel: "Mother", role: "Business Owner, Beauty Salon & Spa", col: 9, row: 1, branch: "me", opens: "mother" },
-  chhaaya:     { name: "Chhaaya Kamerkar", rel: "Aunt", role: "Retired Officer in Water Testing Department, Thane Municipal Corporation", col: 11, row: 1, branch: "mother", opens: "kamerkar" },
+  chhaaya:     { name: "Chhaaya Kamerkar", rel: "Aunt", role: "Retired Officer in Water Testing Department, Thane Municipal Corporation | BSc BMBT Microbiology", col: 11, row: 1, branch: "mother", opens: "kamerkar" },
   chandrashekhar: { name: "Chandrashekhar Kamerkar", rel: "Uncle", role: "Retired Consultant, Oracle Financial Services Software", col: 12, row: 1, branch: "mother" },
   prashant:    { name: "Prashant Gandhe", late: true, rel: "Uncle", role: "Business Owner, Road Construction", col: 15, row: 1, branch: "mother", opens: "gandhe" },
-  pranjali:    { name: "Pranjali Gandhe", rel: "Aunt", role: "School Principal", col: 16, row: 1, branch: "mother" },
+  pranjali:    { name: "Pranjali Gandhe", rel: "Aunt", role: "School Trustee | BSc BMBT Microbiology", col: 16, row: 1, branch: "mother" },
 
   kedar:       { name: "Kedar Telavane", rel: "Cousin Brother", role: "Senior Vice President, Cyber Team, HDFC", col: 0, row: 2, branch: "telavane" },
   pallavi:     { name: "Pallavi Utekar", rel: "Cousin's Wife", role: "Dermatologist | MBBS, MD", col: 1, row: 2, branch: "telavane" },
